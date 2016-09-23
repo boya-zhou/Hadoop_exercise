@@ -1,0 +1,12 @@
+/* query1.pig*/
+
+raw = LOAD '/home/hadoop/Desktop/workspace_hw2/Transactions.txt' USING PigStorage(',') (TransID, CusID, TransTotal, NumItems, TransDesc);
+
+
+user_group = GROUP raw BY CusID;
+
+user_gruop_counts = FOREACH user_group
+	Generate group, Count(user_group.TransID), SUM(user_group.TransTotal);
+    
+
+STORE user_group_counts INTO 'hdfs://localhost:8020/user/hadoop/output/hw2_output_1.txt' USING PigStorage(',');

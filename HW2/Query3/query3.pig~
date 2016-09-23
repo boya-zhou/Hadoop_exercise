@@ -1,0 +1,25 @@
+/*query3.pig*/
+
+trans_raw = LOAD '/usr/share/hadoop/hw1/Transactions.txt' USING PigStorage(',') 
+	AS (TransID,CusID,TransTotal,TransNumItems,TransDesc);
+    
+cus_raw = LOAD '/usr/share/hadoop/hw1/Customers.txt' USING PigStorage(',') 
+	AS (CusID,Name,Age,CountryCode,Salary);
+    
+trans_1 = foreach trans_raw generate TransID, CusID, TransTotal;
+    
+cus_1 = foreach cus_raw generate CusID, CountryCode;
+
+/*join first using replicated join*/
+
+cus_trans = join trans_1 by CusID, cus_1 by CusID using 'replicated';
+
+cc_group = group cus_trans by CountryCode;
+
+final = foreach cc_group 
+	{id = DISTINCT cus_trans.CusID ;generate group as CountryCode, 
+    COUNT(id) as NumOfCustomers, 
+    MIN(cus_trans.TransTotal) as MinTotalSum, MAX(cus_trans.TransTotal) as MaxItems;};
+
+
+STORE final INTO '/user/hadoop/output/hw2_output_3_2.txt' USING PigStorage(',');

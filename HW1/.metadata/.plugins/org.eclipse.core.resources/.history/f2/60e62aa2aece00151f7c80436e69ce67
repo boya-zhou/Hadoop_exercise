@@ -1,0 +1,36 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class DS504_project1 {
+	
+	
+	public static String randomCharPrefix(){
+		Random rand3 = new Random();
+		String alphabet = "abcdefghigklmnopqrstuvwxyz1234567890";
+		String ranChar = "";
+		for (int i = 0; i < 5; i++) {
+	        
+			char c = alphabet.charAt(rand3.nextInt(alphabet.length()));
+			ranChar = ranChar + c;
+	    }
+		return ranChar;
+	}
+	public static void main(String[] args) {
+		try {
+			FileWriter writer = new FileWriter("/Users/boyazhou/Desktop/prefix.txt",true);
+			BufferedWriter bWriter = new BufferedWriter(writer);
+			int i=0;
+			for (i=0;i<50000;i++){
+				bWriter.write(randomCharPrefix().toString()+"\n");
+				
+			}
+			bWriter.flush();
+			bWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

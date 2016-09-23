@@ -1,0 +1,2 @@
+sudo hadoop jar /usr/share/hadoop/contrib/streaming/hadoop-streaming-1.2.1.jar -input /usr/share/hadoop/hw1/* -output /usr/share/hadoop/hw2_output_11 -file /home/hadoop/Desktop/workspace_hw2/Query5/query5_mapper.py -mapper query5_mapper.py -file /home/hadoop/Desktop/workspace_hw2/Query5/query5_reducer.py -reducer query5_reducer.py 
+

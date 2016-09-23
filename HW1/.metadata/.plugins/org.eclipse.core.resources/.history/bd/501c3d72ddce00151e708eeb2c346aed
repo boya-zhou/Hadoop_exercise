@@ -1,0 +1,66 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class DS504_project1 {
+	
+	
+	public static String randomCharPrefix(){
+		Random rand3 = new Random();
+		String alphabet = "abcdefghigklmnopqrstuvwxyz1234567890";
+		String ranChar = "";
+		for (int i = 0; i < 4; i++) {
+	        
+			char c = alphabet.charAt(rand3.nextInt(alphabet.length()));
+			ranChar = ranChar + c;
+	    }
+		return ranChar;
+	}
+	public static void main(String[] args) {
+//		try {
+//			FileWriter writer1 = new FileWriter("/Users/boyazhou/Desktop/prefix_boya.txt",true);
+//			FileWriter writer2 = new FileWriter("/Users/boyazhou/Desktop/prefix_kai.txt",true);
+//			FileWriter writer3 = new FileWriter("/Users/boyazhou/Desktop/prefix_kavin.txt",true);
+//			FileWriter writer4 = new FileWriter("/Users/boyazhou/Desktop/prefix_haitao.txt",true);
+//
+//			BufferedWriter bWriter1 = new BufferedWriter(writer1);
+//			BufferedWriter bWriter2 = new BufferedWriter(writer2);
+//			BufferedWriter bWriter3 = new BufferedWriter(writer3);
+//			BufferedWriter bWriter4 = new BufferedWriter(writer4);
+			
+			String pre = "\"\\\"watch?v=";
+			String after = "\\\"\"";
+			System.out.println(pre);
+			System.out.println(after);
+
+//			int i=0;
+//			for (i=0;i<80000;i++){
+//				if (i<=20000){
+//					bWriter1.write(randomCharPrefix().toString()+"\n");
+//				}
+//				if (i>=20000 && i<40000){
+//					bWriter2.write(randomCharPrefix().toString()+"\n");
+//				}
+//				if (i>=40000 && i<60000){
+//					bWriter3.write(randomCharPrefix().toString()+"\n");
+//				}
+//				if (i>=60000 ){
+//					bWriter4.write(randomCharPrefix().toString()+"\n");
+//				}
+//			}
+//			bWriter1.flush();
+//			bWriter1.close();
+//			bWriter2.flush();
+//			bWriter2.close();
+//			bWriter3.flush();
+//			bWriter3.close();
+//			bWriter4.flush();
+//			bWriter4.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		System.out.println("finish!");
+	}
+}

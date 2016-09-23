@@ -1,0 +1,175 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DS504_ask_new_prefix {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		ArrayList<String> list = new ArrayList<String>();
+
+		try {
+			Scanner s;
+
+			s = new Scanner(new File("/Users/boyazhou/Desktop/DS504_BDA/Project1/others prefix/prefix_all_Feb_12.txt"));
+			
+			
+		while (s.hasNext()){
+		    list.add(s.next());
+		}
+		s.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	String pre = "\"watch?v=";
+	String after = "\"";
+	String alpha = "abcdefghigklmnopqrstuvwxyz1234567890";
+//	char[] seq = alpha.toCharArray();
+//
+//	int length = 4;
+	StringBuilder builder = new StringBuilder(" ");
+
+	int j=0;
+	
+	try {
+		FileWriter writer1 = new FileWriter("/Users/boyazhou/Desktop/prefix_boya_new.txt",true);
+		FileWriter writer2 = new FileWriter("/Users/boyazhou/Desktop/prefix_kai_new.txt",true);
+		FileWriter writer3 = new FileWriter("/Users/boyazhou/Desktop/prefix_kavin_new.txt",true);
+		FileWriter writer4= new FileWriter("/Users/boyazhou/Desktop/prefix_haitao_new.txt",true);
+		BufferedWriter bWriter1 = new BufferedWriter(writer1);
+		BufferedWriter bWriter2 = new BufferedWriter(writer2);
+		BufferedWriter bWriter3 = new BufferedWriter(writer3);
+		BufferedWriter bWriter4 = new BufferedWriter(writer4);
+	
+	
+	
+	String forwrite = "";
+	ArrayList<String> list2 = new ArrayList<String>();
+
+	
+	
+       char[] chars = "abcdefghigklmnopqrstuvwxyz1234567890".toCharArray();
+       int i = 0;
+       
+       for ( char a : chars )
+       {
+           for ( char b: chars )
+           {
+               for ( char c : chars )
+               {
+                   for ( char d: chars )
+                   {
+                	   String input ="";
+                	   input= input + a +b +c +d ;
+//                       System.out.println( input);
+                       list2.add(input.toString());
+                   }
+               }
+           }
+       }
+    
+//       for (String element:list2){
+//    	   System.out.println(element);
+//       }
+	
+//	int[] pos = new int[length];
+//	int total = (int) Math.pow(alpha.length(), length);
+//	for (int i = 0; i < total; i++) {
+//	    for (int x = 0; x < length; x++) {
+//	        if (pos[x] == seq.length) {
+//	            pos[x] = 0;
+//	            if (x + 1 < length) {
+//	                pos[x + 1]++;
+//	            }
+//	        }
+//	        builder.setCharAt(x, seq[pos[x]]);
+//	        
+//	    }
+//	    pos[0]++;
+	    
+	    	
+	    
+	    
+//	    System.out.println(builder.toString());
+
+	
+	
+	list2.removeAll(list);
+	
+	for(String element:list2){
+	    System.out.println(element);
+
+	    
+			if (j<=400000){
+				forwrite = pre + element.toString() +after;
+				try {
+					
+						bWriter1.write(forwrite+"\n");
+						j++;
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (j>=400000 && j<800000){
+				forwrite = pre + element.toString() +after;
+				try {
+					
+						bWriter2.write(forwrite+"\n");
+						j++;
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (j>=800000 && j<1200000){
+				forwrite = pre + element.toString() +after;
+				try {
+					
+						bWriter3.write(forwrite+"\n");
+						j++;
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (j>=1200000){
+				forwrite = pre + element.toString() +after;
+				try {
+					
+						bWriter4.write(forwrite+"\n");
+						j++;
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		
+	}
+	
+
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+
+	
+	System.out.println("finish");
+}
+}

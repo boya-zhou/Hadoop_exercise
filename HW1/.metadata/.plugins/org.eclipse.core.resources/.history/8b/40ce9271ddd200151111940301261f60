@@ -1,0 +1,25 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class seperate_file {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Scanner s;
+
+			s = new Scanner(new File("/Users/boyazhou/Desktop/DS504_BDA/Project1/prefix_pool/prefix_boya_pool.txt"));
+			
+			
+		while (s.hasNext()){
+		    list.add(s.next());
+		}
+		s.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
